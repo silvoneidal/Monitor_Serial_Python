@@ -4,6 +4,7 @@ import customtkinter as ctk
 import serial
 import threading
 import serial.tools.list_ports
+import time
 
 # Inicialização do customtkinter
 ctk.set_appearance_mode("dark")  # Define o modo de aparência (dark/light/system)
@@ -38,15 +39,15 @@ def read_serial():
         except Exception as e:
             if ser:
                 ser.close()
-            is_connected = False
-            connect_button.configure(text="Conectar")  # Muda o botão de volta para "Conectar"
-            scan_button.configure(state='normal')  # Habilita o botão
-            com_port_combo.configure(state='normal')  # Habilita o combo
-            baudrate_combo.configure(state='normal')  # Habilita o combo
-            conectar_serial() # Somente para atualizar variáveis
-            atualizar_com_port_combo() # Atualizar portas ativas
-            print(f"Erro ao ler da porta serial: {e}")
-            print(f"Porta desconectada...")
+                is_connected = False
+                connect_button.configure(text="Conectar")  # Muda o botão de volta para "Conectar"
+                scan_button.configure(state='normal')  # Habilita o botão
+                com_port_combo.configure(state='normal')  # Habilita o combo
+                baudrate_combo.configure(state='normal')  # Habilita o combo
+                #conectar_serial() # Somente para atualizar variáveis
+                atualizar_com_port_combo() # Atualizar portas ativas
+                print(f"Erro ao ler da porta serial: {e}")
+                print(f"Porta desconectada...")
 
 # Função para enviar dados
 def send_data():
@@ -91,13 +92,14 @@ def conectar_serial():
         try:
             if ser:
                 ser.close()
-            is_connected = False
-            connect_button.configure(text="Conectar")
-            scan_button.configure(state='normal')
-            com_port_combo.configure(state='normal')
-            baudrate_combo.configure(state='normal')
+                is_connected = False
+                connect_button.configure(text="Conectar")
+                scan_button.configure(state='normal')
+                com_port_combo.configure(state='normal')
+                baudrate_combo.configure(state='normal')
         except Exception as e:
             print(f"Erro ao desconectar: {e}")
+       
 
 # Interface CustomTkinter
 root = ctk.CTk()

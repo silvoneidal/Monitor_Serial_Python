@@ -1,5 +1,5 @@
 ('H:\\Eletronica\\Projetos\\Projetos_Python\\Monitor Serial '
- 'Python\\Fimrware_v2.1\\build\\main\\PYZ-00.pyz',
+ 'Python\\Fimrware_v2.0\\build\\main\\PYZ-00.pyz',
  [('PIL',
    'C:\\Users\\Usuario\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\PIL\\__init__.py',
    'PYMODULE'),
