@@ -37,17 +37,18 @@ def read_serial():
                 text_area.insert("end", data + '\n')
                 text_area.yview("end")  # Scroll automático para o fim
         except Exception as e:
-            if ser:
+            if e.args[0] == f"GetOverlappedResult failed (PermissionError(13, 'Acesso negado.', None, 5))" :
                 ser.close()
                 is_connected = False
                 connect_button.configure(text="Conectar")  # Muda o botão de volta para "Conectar"
                 scan_button.configure(state='normal')  # Habilita o botão
                 com_port_combo.configure(state='normal')  # Habilita o combo
                 baudrate_combo.configure(state='normal')  # Habilita o combo
-                #conectar_serial() # Somente para atualizar variáveis
+                conectar_serial() # Somente para atualizar variáveis
                 atualizar_com_port_combo() # Atualizar portas ativas
-                print(f"Erro ao ler da porta serial: {e}")
                 print(f"Porta desconectada...")
+            print(f"Erro ao ler da porta serial: {e}")
+            
 
 # Função para enviar dados
 def send_data():
